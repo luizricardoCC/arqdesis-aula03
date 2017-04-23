@@ -12,6 +12,35 @@ import transferObject.RegistroAcessoTO;
 public class RegistroAcessoDAO {
 	Connection conn = null;
 	AcessoBD bd = new AcessoBD();
+	
+	public RegistroAcessoTO consultar(long cpf){
+		String sql = "SELECT * FROM registroacesso "
+				+ "WHERE regAceCPFUsuario = ? ORDER BY regAceData DESC LIMIT 1";
+		PreparedStatement stm = null;
+		ResultSet rs;
+		RegistroAcessoTO ultimoRegistroAcesso = new RegistroAcessoTO();
+
+		try {
+			conn = bd.obtemConexao();
+			stm = conn.prepareStatement(sql);
+			stm.setLong(1, cpf);
+			rs = stm.executeQuery();
+
+			if (rs.next()) {
+				ultimoRegistroAcesso = new RegistroAcessoTO(rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+							}
+
+			stm.close();
+
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		
+		}
+		return ultimoRegistroAcesso;
+	}
 
 	public ArrayList<RegistroAcessoTO> consultarPorEmpresa(String empresa) {
 

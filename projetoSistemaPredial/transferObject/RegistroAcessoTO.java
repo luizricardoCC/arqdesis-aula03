@@ -12,6 +12,10 @@ public class RegistroAcessoTO {
 		this.horarioEntrada = horarioEntrada;
 		this.horarioSaida = horarioSaida;
 	}
+	
+	public RegistroAcessoTO(){
+		this(null, null, null, null, null, null);
+	}
 
 	public String getData() {
 		return data;
@@ -67,5 +71,49 @@ public class RegistroAcessoTO {
 				+ ", getNomeUsuario()=" + getNomeUsuario() + ", getNomeEmpresa()=" + getNomeEmpresa()
 				+ ", getHorarioEntrada()=" + getHorarioEntrada() + ", getHorarioSaida()=" + getHorarioSaida() + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RegistroAcessoTO other = (RegistroAcessoTO) obj;
+		if (cpfUsuario == null) {
+			if (other.cpfUsuario != null)
+				return false;
+		} else if (!cpfUsuario.equals(other.cpfUsuario))
+			return false;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (horarioEntrada == null) {
+			if (other.horarioEntrada != null)
+				return false;
+		} else if (!horarioEntrada.equals(other.horarioEntrada))
+			return false;
+		if (horarioSaida == null) {
+			if (other.horarioSaida != null)
+				return false;
+		} else if (!horarioSaida.equals(other.horarioSaida))
+			return false;
+		if (nomeEmpresa == null) {
+			if (other.nomeEmpresa != null)
+				return false;
+		} else if (!nomeEmpresa.equals(other.nomeEmpresa))
+			return false;
+		if (nomeUsuario == null) {
+			if (other.nomeUsuario != null)
+				return false;
+		} else if (!nomeUsuario.equals(other.nomeUsuario))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

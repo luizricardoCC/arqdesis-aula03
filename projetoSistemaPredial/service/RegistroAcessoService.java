@@ -45,6 +45,12 @@ public class RegistroAcessoService {
 		}
 		return false;
 	}
+	
+	public RegistroAcessoTO consultar(long cpf){
+		RegistroAcessoDAO regAceDAO = new RegistroAcessoDAO();
+		RegistroAcessoTO ultimoRegistro = regAceDAO.consultar(cpf);
+		return ultimoRegistro;
+	}
 
 	public JTable consultarPorEmpresa(String empresa) {
 		RegistroAcessoDAO regAceDAO = new RegistroAcessoDAO();

@@ -8,9 +8,7 @@ import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
 import service.EmpresaService;
-import service.UsuarioService;
 import transferObject.EmpresaTO;
-import transferObject.UsuarioTO;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,12 +28,12 @@ public class EmpresaServiceTest {
 	
 	@Test
 	public void test00Consultar() {
-		EmpresaTO fixture = new EmpresaTO(Long.parseLong("23997723750"), 
-				"R UNIT Ltda", 
-				"B", 
-				"09:00 - 17:30", 
-				"10:00 - 17:30", 
-				56);
+		EmpresaTO fixture = new EmpresaTO(Long.parseLong("23997723700"), 
+				"Ricardo Ltda", 
+				"A", 
+				"08:00 - 17:30", 
+				"08:00 - 17:30", 
+				20);
 		
 		returnedEnterprise = test.consultar( fixture.getCnpj() );
 		
