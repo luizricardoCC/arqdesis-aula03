@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 import dao.EmpresaDAO;
+import javabean.UsuarioTO;
 import model.UsuarioM;
 import service.UsuarioService;
-import transferObject.UsuarioTO;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;

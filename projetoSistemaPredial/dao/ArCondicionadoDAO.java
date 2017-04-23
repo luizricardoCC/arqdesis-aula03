@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import connection.AcessoBD;
+import connection.ConnectionFactory;
 
 import java.sql.ResultSet;
 
 public class ArCondicionadoDAO
 {  
-   AcessoBD bd = new AcessoBD(); 
+   ConnectionFactory bd = new ConnectionFactory(); 
    Connection conn = null;
    
    public int contarEmpresas()

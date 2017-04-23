@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import connection.AcessoBD;
-import transferObject.RegistroAcessoTO;
+import connection.ConnectionFactory;
+import javabean.RegistroAcessoTO;
 
 public class RegistroAcessoDAO {
 	Connection conn = null;
-	AcessoBD bd = new AcessoBD();
+	ConnectionFactory bd = new ConnectionFactory();
 	
 	public RegistroAcessoTO consultar(long cpf){
 		String sql = "SELECT * FROM registroacesso "

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import javax.swing.text.MaskFormatter;
 
+import javabean.RegistroAcessoTO;
 import model.RegistroDeAcessoM;
 import service.RegistroAcessoService;
 
@@ -36,7 +37,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 import java.text.ParseException;
-import transferObject.RegistroAcessoTO;
 
 public class RegistroDeAcessoVC extends JFrame implements ActionListener, ItemListener {
 	private JTable tabRegistros;

@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
+import javabean.RegistroAcessoTO;
 import service.RegistroAcessoService;
-import transferObject.RegistroAcessoTO;
 
 
 public class RegistroAcessoServiceTest {

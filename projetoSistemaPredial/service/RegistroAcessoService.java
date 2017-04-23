@@ -7,8 +7,8 @@ import javax.swing.JTable;
 
 import criptografia.Decypher;
 import dao.RegistroAcessoDAO;
+import javabean.RegistroAcessoTO;
 import model.LoginModel;
-import transferObject.RegistroAcessoTO;
 
 public class RegistroAcessoService {
 	RegistroAcessoDAO regAceService;

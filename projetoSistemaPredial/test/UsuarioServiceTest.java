@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
+import javabean.UsuarioTO;
 import service.UsuarioService;
-import transferObject.UsuarioTO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UsuarioServiceTest {

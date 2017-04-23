@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import javabean.Empresa;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,7 +21,6 @@ import java.util.Locale;
 import java.awt.Color;
 
 import service.EmpresaService;
-import transferObject.EmpresaTO;
 
 public class EmpresaVC extends JDialog implements ActionListener
 {
@@ -278,7 +280,7 @@ public class EmpresaVC extends JDialog implements ActionListener
          {
            
             EmpresaService eCadastrar = new EmpresaService();
-            EmpresaTO eNovo = new EmpresaTO(Long.parseLong(tCnpj.getText()),
+            Empresa eNovo = new Empresa(Long.parseLong(tCnpj.getText()),
         			tRZ.getText(),
         			tConj.getText(),
         			tHorFunc.getText(),
@@ -316,7 +318,7 @@ public class EmpresaVC extends JDialog implements ActionListener
       if(e.getSource()== b3)
       {
     	  EmpresaService empresaService = new EmpresaService();
-    	  EmpresaTO eNovo = new EmpresaTO(Long.parseLong(tCnpj.getText()),
+    	  Empresa eNovo = new Empresa(Long.parseLong(tCnpj.getText()),
         			tRZ.getText(),
           			tConj.getText(),
           			tHorFunc.getText(),
@@ -344,7 +346,7 @@ public class EmpresaVC extends JDialog implements ActionListener
       {
          try{
         	 EmpresaService empresaService = new EmpresaService();
-        	 EmpresaTO empTO = empresaService.consultar(Long.parseLong(tCnpj.getText()));
+        	 Empresa empTO = empresaService.consultar(Long.parseLong(tCnpj.getText()));
         	 lastCNPJ = empTO.getCnpj();
             tRZ.setText(empTO.getRazaoSocial());
                tConj.setText(empTO.getConjunto());

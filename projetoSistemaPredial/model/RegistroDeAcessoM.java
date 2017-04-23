@@ -3,13 +3,13 @@ package model;
 import java.sql.*;
    import java.util.*;
 
-import connection.AcessoBD;
+import connection.ConnectionFactory;
 
    public class RegistroDeAcessoM
    {
 
       Connection conn = null;
-      AcessoBD bd = new AcessoBD(); 
+      ConnectionFactory bd = new ConnectionFactory(); 
    
    //construtor
    

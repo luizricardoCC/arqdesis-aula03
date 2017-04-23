@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 
 import java.util.ArrayList;
 
-import connection.AcessoBD;
+import connection.ConnectionFactory;
 
 public class CipherDAO
 { 
-   AcessoBD bd = new AcessoBD(); 
+   ConnectionFactory bd = new ConnectionFactory(); 
    Connection conn = null;
    
 @SuppressWarnings("rawtypes")

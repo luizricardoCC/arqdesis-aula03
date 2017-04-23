@@ -1,7 +1,7 @@
 package service;
 
 import dao.UsuarioDAO;
-import transferObject.UsuarioTO;
+import javabean.UsuarioTO;
 
 public class UsuarioService {
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();

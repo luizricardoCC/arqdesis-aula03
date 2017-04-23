@@ -1,7 +1,7 @@
 package model;
 
 import dao.UsuarioDAO;
-import transferObject.UsuarioTO;
+import javabean.UsuarioTO;
 
 public class UsuarioM {
 	private String nome, dataNasc, endereco, bairro, senha, empresa, horEntrada, horSaida;

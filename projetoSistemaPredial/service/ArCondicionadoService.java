@@ -7,8 +7,8 @@ import java.util.Scanner;
 import dao.ArCondicionadoDAO;
 import dao.EmpresaDAO;
 import dao.UsuarioDAO;
-import transferObject.EmpresaTO;
-import transferObject.UsuarioTO;
+import javabean.Empresa;
+import javabean.UsuarioTO;
 
 import java.io.File;
 
@@ -26,11 +26,11 @@ public class ArCondicionadoService {
 
 	public String[][] consultarTodosAC() {
 
-		ArrayList<EmpresaTO> listaEmpresas = edao.consultarTodasEmpresas();
+		ArrayList<Empresa> listaEmpresas = edao.consultarTodasEmpresas();
 		String[][] listaAC = new String[listaEmpresas.size()][5];
 		
 		int linha = 0;
-		for(EmpresaTO emp : listaEmpresas){
+		for(Empresa emp : listaEmpresas){
 			listaAC[linha][0] = emp.getRazaoSocial(); // Coluna Razão Social
 			listaAC[linha][1] = emp.getConjunto(); // Coluna Conjunto
 			listaAC[linha][2] = String.valueOf( emp.getValorMaxAC() ); // Coluna Temperatura Máxima

@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import connection.AcessoBD;
-import transferObject.UsuarioTO;
+import connection.ConnectionFactory;
+import javabean.UsuarioTO;
 
 import java.sql.ResultSet;
 
@@ -16,7 +16,7 @@ public class UsuarioDAO
    private long cpf, telefone;
    private boolean permissaoAC;*/
    
-   AcessoBD bd = new AcessoBD(); 
+   ConnectionFactory bd = new ConnectionFactory(); 
    Connection conn = null;
    
    //Construtor Padrão

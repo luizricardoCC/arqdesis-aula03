@@ -1,12 +1,12 @@
 package service;
 
 import dao.EmpresaDAO;
-import transferObject.EmpresaTO;
+import javabean.Empresa;
 
 public class EmpresaService {
 	EmpresaDAO empDAO = new EmpresaDAO();
 	//Cadastrar
-	   public boolean cadastrar(EmpresaTO eNovo)
+	   public boolean cadastrar(Empresa eNovo)
 	   {
 	      if(empDAO.cadastrar(eNovo)) 
 	         return true;
@@ -16,9 +16,9 @@ public class EmpresaService {
 	   }
 	   
 	   //Consultar
-	   public EmpresaTO consultar(long cnpj)
+	   public Empresa consultar(long cnpj)
 	   {
-	      EmpresaTO empTO = empDAO.carregar(cnpj); 
+	      Empresa empTO = empDAO.carregar(cnpj); 
 	      return empTO;
 	   }
 	   
@@ -35,7 +35,7 @@ public class EmpresaService {
 	   }
 	   
 	   //Alterar
-	   public boolean alterar( long cnpj, EmpresaTO eNovo)
+	   public boolean alterar( long cnpj, Empresa eNovo)
 	   {
 		   EmpresaDAO empDAO3 = new EmpresaDAO();
 		   /*System.out.println("Classe Service");      			

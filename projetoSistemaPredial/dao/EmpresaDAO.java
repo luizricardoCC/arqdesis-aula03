@@ -6,12 +6,11 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import connection.AcessoBD;
-import transferObject.EmpresaTO;
+import connection.ConnectionFactory;
+import javabean.Empresa;
 
 public class EmpresaDAO {
 
-	AcessoBD bd = new AcessoBD();
 	Connection conn = null;
 
 	// Construtor Padrão
@@ -21,7 +20,8 @@ public class EmpresaDAO {
 	}
 
 	// Cadastrar no banco
-	public boolean cadastrar( EmpresaTO empresaTO ) {
+	@SuppressWarnings("static-access")
+	public boolean cadastrar( Empresa emp ) {
 		
 	      String sqlSelect = "INSERT INTO empresa( empresaCNPJ,"
                   									+ "empresaRazaoSocial,"
@@ -33,20 +33,20 @@ public class EmpresaDAO {
 		
 
 		PreparedStatement stm = null;
-		ResultSet rs = null;
+		
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			// conn.setAutoCommit(false);
 			stm = conn.prepareStatement(sqlSelect);
 
-			stm.setLong(1, empresaTO.getCnpj());
-			stm.setString(2, empresaTO.getRazaoSocial());
-			stm.setString(3, empresaTO.getConjunto());
-			stm.setString(4, empresaTO.getHorFunc());
-			stm.setString(5, empresaTO.getHorFuncAC());
-			stm.setInt(6, empresaTO.getValorMaxAC());
+			stm.setLong(1, emp.getCnpj());
+			stm.setString(2, emp.getRazaoSocial());
+			stm.setString(3, emp.getConjunto());
+			stm.setString(4, emp.getHorFunc());
+			stm.setString(5, emp.getHorFuncAC());
+			stm.setInt(6, emp.getValorMaxAC());
 
-			stm.executeUpdate();
+			stm.execute();
 			stm.close();
 
 			return true;
@@ -56,46 +56,47 @@ public class EmpresaDAO {
 	}
 
 	// Carregar do banco
-	public EmpresaTO carregar(long cnpj) {
+	public Empresa carregar(long cnpj) {
 		String sqlSelect = "SELECT * FROM empresa WHERE empresaCNPJ = ?";
 		PreparedStatement stm = null;
 		ResultSet rs = null;
-		EmpresaTO empresaTO = new EmpresaTO();
+		Empresa emp = new Empresa();
 		
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			stm = conn.prepareStatement(sqlSelect);
 			stm.setLong(1, cnpj);
 			rs = stm.executeQuery();
 			if (rs.next()) {
-				empresaTO.setCnpj(rs.getLong(1));
-				empresaTO.setRazaoSocial(rs.getString(2));
-				empresaTO.setConjunto(rs.getString(3));
-				empresaTO.setHorFunc(rs.getString(4));
-				empresaTO.setHorFuncAC(rs.getString(5));
-				empresaTO.setValorMaxAC(rs.getInt(6));
+				emp.setCnpj(rs.getLong(1));
+				emp.setRazaoSocial(rs.getString(2));
+				emp.setConjunto(rs.getString(3));
+				emp.setHorFunc(rs.getString(4));
+				emp.setHorFuncAC(rs.getString(5));
+				emp.setValorMaxAC(rs.getInt(6));
 			}
 			
 
 		} catch (Exception e) {
 			System.out.println("Erro na consulta");
 		}
-		return empresaTO;
+			return emp;
+		
 	}
 	
-	public ArrayList<EmpresaTO> consultarTodasEmpresas(){
+	public ArrayList<Empresa> consultarTodasEmpresas(){
 		
 		String sqlSelect = "SELECT empresaRazaoSocial, empresaConjunto, empresaTempMaxAC FROM empresa";
 		PreparedStatement stm = null;
 		ResultSet rs = null;
-		ArrayList<EmpresaTO> listaEmpresas = new ArrayList<EmpresaTO>();
+		ArrayList<Empresa> listaEmpresas = new ArrayList<Empresa>();
 		
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			stm = conn.prepareStatement(sqlSelect);
 			rs = stm.executeQuery();
 			while (rs.next()) {
-				EmpresaTO empTO = new EmpresaTO();
+				Empresa empTO = new Empresa();
 				empTO.setRazaoSocial(rs.getString(1));
 				empTO.setConjunto(rs.getString(2));
 				empTO.setValorMaxAC(rs.getInt(3));
@@ -116,7 +117,7 @@ public class EmpresaDAO {
 		PreparedStatement stm = null;
 		ResultSet rs = null;
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			stm = conn.prepareStatement(sqlSelect);
 			rs = stm.executeQuery();
 			while (rs.next()) {
@@ -140,7 +141,7 @@ public class EmpresaDAO {
 		PreparedStatement stm = null;
 		ResultSet rs = null;
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			stm = conn.prepareStatement(sqlSelect);
 			stm.setLong(1, cnpj);
 			stm.executeUpdate();
@@ -153,7 +154,7 @@ public class EmpresaDAO {
 	}
 
 	// Alterar do banco
-	public boolean alterar(long cnpj, EmpresaTO empresaTO) {
+	public boolean alterar(long cnpj, Empresa emp) {
 		
 		String sqlSelect = "UPDATE empresa SET empresaCNPJ = ?, "
 							+ "empresaRazaoSocial = ?, "
@@ -165,21 +166,21 @@ public class EmpresaDAO {
 		
 		PreparedStatement stm = null;
 		/*System.out.println("Classe DAO");      			
-      	System.out.println(empresaTO.getCnpj());
-      					System.out.println(empresaTO.getRazaoSocial());
-      					System.out.println(empresaTO.getConjunto());
-      					System.out.println(empresaTO.getHorFunc());
-      					System.out.println(empresaTO.getHorFuncAC());
-      					System.out.println(empresaTO.getValorMaxAC());*/
+      	System.out.println(emp.getCnpj());
+      					System.out.println(emp.getRazaoSocial());
+      					System.out.println(emp.getConjunto());
+      					System.out.println(emp.getHorFunc());
+      					System.out.println(emp.getHorFuncAC());
+      					System.out.println(emp.getValorMaxAC());*/
 		try {
-			conn = bd.obtemConexao();
+			conn = ConnectionFactory.obtemConexao();
 			stm = conn.prepareStatement(sqlSelect);
-			stm.setLong(1, empresaTO.getCnpj());
-			stm.setString(2, empresaTO.getRazaoSocial());
-			stm.setString(3, empresaTO.getConjunto());
-			stm.setString(4, empresaTO.getHorFunc());
-			stm.setString(5, empresaTO.getHorFuncAC());
-			stm.setInt(6, empresaTO.getValorMaxAC());
+			stm.setLong(1, emp.getCnpj());
+			stm.setString(2, emp.getRazaoSocial());
+			stm.setString(3, emp.getConjunto());
+			stm.setString(4, emp.getHorFunc());
+			stm.setString(5, emp.getHorFuncAC());
+			stm.setInt(6, emp.getValorMaxAC());
 			stm.setLong(7, cnpj);
 			stm.executeUpdate();
 			stm.close();
