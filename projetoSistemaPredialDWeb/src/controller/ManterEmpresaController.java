@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,25 +48,15 @@ public class ManterEmpresaController extends HttpServlet {
 				formTempMaxAC);
 		
 		EmpresaService es = new EmpresaService();
-		String resultado= "";
-		if( es.cadastrar(emp))
-		{
-			resultado = "Empresa cadastrada com sucesso!";
-		}
-		else{
-			resultado = "Erro no cadastro da Empresa";
-		}
+		es.cadastrar(emp);
 		
 		emp = es.consultar(formCnpj);
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>"+resultado+"</title></head><body>");
-		out.println(	"CNPJ: "+emp.getCnpj()+"<br>");
-		out.println(	"Razão Social: "+emp.getRazaoSocial()+"<br>");
-		out.println(	"Conjunto: "+emp.getConjunto()+"<br>");
-		out.println(	"Horário Funcionamento: "+emp.getHorFunc()+"<br>");
-		out.println(	"Horário Funcionamento AC: "+emp.getHorFuncAC()+"<br>");
-		out.println(	"Temperatura Máxima AC: "+emp.getValorMaxAC()+"<br>");
-	    out.println("</body></html>");
+		
+		request.setAttribute("empresa", emp);
+		
+		RequestDispatcher view = request.getRequestDispatcher("Empresa.jsp");
+		view.forward(request, response);
+		
 	}
 
 }

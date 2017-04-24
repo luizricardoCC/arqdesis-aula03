@@ -16,7 +16,6 @@ import javax.swing.text.MaskFormatter;
 
 import dao.EmpresaDAO;
 import javabean.UsuarioTO;
-import model.UsuarioM;
 import service.UsuarioService;
 
 import java.awt.GridLayout;
