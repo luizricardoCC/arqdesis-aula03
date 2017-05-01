@@ -6,16 +6,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Empresa</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <title>Visualizar Empresa</title>
 </head>
-<body>
-	<% Empresa emp = (Empresa)request.getAttribute("empresa"); %>
-	CNPJ: <%= emp.getCnpj()%><br>
-	Razão Social: <%= emp.getRazaoSocial()%><br>
-	Conjunto: <%= emp.getConjunto()%><br>
-	Horário Funcionamento: <%= emp.getHorFunc()%><br>
-	Horário Funcionamento AC: <%= emp.getHorFuncAC()%><br>
-	Temperatura Máxima AC: <%= emp.getValorMaxAC()%><br>
-</body>
+	<body>
+		<script src="js/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+		
+		<% Empresa emp = (Empresa)request.getAttribute("empresa"); %>
+		
+		<!-- Barra superior com os menus de navegação -->
+
+        <!-- Container Principal -->
+        <div id="main" class="container">
+            <h3 class="page-header">Visualizar Empresa CNPJ <%=emp.getCnpj() %></h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>Razão Social</strong>
+                    </p>
+                    <p>
+                        <%=emp.getRazaoSocial() %>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Conjunto</strong>
+                    </p>
+                    <p>
+                        <%=emp.getConjunto() %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Horário Funcionamento</strong>
+                    </p>
+                    <p>
+                        <%=emp.getHorFunc() %>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Horário Funcionamento do Ar-Condicionado</strong>
+                    </p>
+                    <p>
+                        <%=emp.getHorFuncAC() %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Temperatura Máxima do Ar-Condicionado</strong>
+                    </p>
+                    <p>
+                        <%=emp.getValorMaxAC() %>
+                    </p>
+                </div>
+            </div>
+            <hr />
+            <div id="actions" class="row">
+                <div class="col-md-12">
+                    <a href="cadastrar.html" class="btn btn-default">Voltar</a>
+                </div>
+            </div>
+        </div>
+
+	</body>
 </html>

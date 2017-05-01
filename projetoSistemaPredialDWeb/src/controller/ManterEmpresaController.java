@@ -32,12 +32,12 @@ public class ManterEmpresaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		long	formCnpj 		= Long.parseLong( request.getParameter("txtCNPJ") );
-		String	formRazaoSocial	= request.getParameter("txtRazao");
-		String	formConjunto	= request.getParameter("txtConjunto");
-		String	formHorFunc		= request.getParameter("txtHrFunc");
-		int		formTempMaxAC	= Integer.parseInt( request.getParameter("txtTempMaxAC") );
-		String	formHorFuncAC	= request.getParameter("txtHrFuncAC");
+		long	formCnpj 		= Long.parseLong( request.getParameter("cnpj") );
+		String	formRazaoSocial	= request.getParameter("razaoSocial");
+		String	formConjunto	= request.getParameter("conjunto");
+		String	formHorFunc		= request.getParameter("horarioFunc");
+		int		formTempMaxAC	= Integer.parseInt( request.getParameter("tempMaxAC") );
+		String	formHorFuncAC	= request.getParameter("horarioFuncAC");
 		
 		//javabean
 		Empresa emp = new Empresa( formCnpj, 

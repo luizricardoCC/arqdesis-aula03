@@ -1,71 +1,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cadastrar Empresa</title>
-<style type="text/css">
-.letra {
-	font-weight: bold;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.Titulo {
-	font-weight: bold;
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 36px;
-}
-
-</style>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <title>Cadastrar Empresa</title>
 </head>
 
-<body bgcolor="#999999" >
-<table width="801" height="588" border="0" align="center" background="img/fundo cadastro.png">
-  <tr>
-    <td height="175" class="Titulo">Cadastrar Empresa</td>
-  </tr>
-  <tr>
-    <td height="147"><form id="form1" name="form1" method="get" action="ManterEmpresa.do">
-      <table width="485" height="260" border="0" align="center">
-        <tr>
-          <td class="letra">CNPJ:</td>
-          <td><label for="txtCNPJ"></label>
-            <input type="text" name="txtCNPJ" id="txtCNPJ" maxlength="14" /></td>
-        </tr>
-        <tr>
-          <td class="letra">Razão Social:</td>
-          <td><label for="txtRazao"></label>
-            <input type="text" name="txtRazao" id="txtRazao" /></td>
-        </tr>
-        <tr>
-          <td class="letra">Conjunto:</td>
-          <td><label for="txtConjunto"></label>
-            <input type="text" name="txtConjunto" id="txtConjunto" /></td>
-        </tr>
-        <tr>
-          <td class="letra">Horário de Funcionamento:</td>
-          <td><label for="txtHrFunc"></label>
-            <input type="text" name="txtHrFunc" id="txtHrFunc" /></td>
-        </tr>
-        <tr>
-          <td class="letra">Temperatura Máxima AC:</td>
-          <td><label for="txtTempMaxAC"></label>
-            <input type="text" name="txtTempMaxAC" id="txtTempMaxAC" /></td>
-        </tr>
-        <tr>
-          <td><span class="letra">Horário de Funcionamento AC:</span></td>
-          <td><label for="txtHrFuncAC"></label>
-            <input type="text" name="txtHrFuncAC" id="txtHrFuncAC" /></td>
-        </tr>
-      </table>
-      <p>&nbsp;</p>
-      <table width="414" border="0" align="center">
-        <tr>
-          <td width="150"><input type="submit" width="100" height="50" /></td>
-        </tr>
-      </table>
-      <p>&nbsp;</p>
-    </form></td>
-  </tr>
-</table>
+<body>
+	
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+	<!-- Barra superior com os menus de navegação -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="cadastrar.html">Cadastrar Empresa</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="cadastrar.html">Empresas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Container Principal -->
+    <div id="main" class="container">
+        <h3 class="page-header">Cadastrar Empresa</h3>
+        <!-- Formulario para inclusao de empresas -->
+        <form action="ManterEmpresa.do" method="post">
+            <!-- area de campos do form -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="number" class="form-control" name="cnpj" id="cnpj" required maxlength="11" placeholder="Somente números">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="razaoSocial">Razão Social</label>
+                    <input type="text" class="form-control" name="razaoSocial" id="razaoSocial" required maxlength="44" placeholder="Nome da Empresa">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="conjunto">Conjunto</label>
+                    <input type="text" class="form-control" name="conjunto" id="conjunto" required maxlength="1" placeholder="Uma letra (A-Z)">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="horarioFunc">Horário de Funcionamento</label>
+                    <input type="text" class="form-control" name="horarioFunc" id="horarioFunc" required maxlength="11" placeholder="00:00-00:00">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="horarioFuncAC">Horário de Funcionamento do Ar-Condicionado</label>
+                    <input type="text" class="form-control" name="horarioFuncAC" id="horarioFuncAC" required maxlength="11" placeholder="00:00-00:00">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tempMaxAC">Temperatura Máxima do Ar-Condicionado</label>
+                    <input type="number" class="form-control" name="tempMaxAC" id="tempMaxAC" required maxlength="2" placeholder="Temperatura em graus Celsius">
+                </div>
+            </div>
+            <hr />
+            <div id="actions" class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary" name="acao" value="Criar">Salvar</button>
+                    <a href="cadastrar.html" class="btn btn-default">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    
 </body>
 </html>
