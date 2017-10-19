@@ -8,7 +8,7 @@ import dao.ArCondicionadoDAO;
 import dao.EmpresaDAO;
 import dao.UsuarioDAO;
 import javabean.Empresa;
-import javabean.UsuarioTO;
+import javabean.Usuario;
 
 import java.io.File;
 
@@ -43,7 +43,7 @@ public class ArCondicionadoService {
 
 	public boolean permissaoAlterarAC(long cpf) {
 		UsuarioDAO udao = new UsuarioDAO();
-		UsuarioTO uTO = udao.consultarUsuario(cpf);
+		Usuario uTO = udao.consultarUsuario(cpf);
 				
 		if ( uTO.getPermissaoAC())
 			return true;

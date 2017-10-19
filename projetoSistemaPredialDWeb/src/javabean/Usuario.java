@@ -1,18 +1,18 @@
 package javabean;
 
-public class UsuarioTO {
+public class Usuario {
 	private String nome, dataNasc, endereco, bairro, senha, empresa, horEntrada, horSaida;
 	private int tipo;
 	private long cpf, telefone;
 	private boolean permissaoAC;
 
 	// Construtor Padrão
-	public UsuarioTO() {
+	public Usuario() {
 		this(-1, null, null, null, null, -1, null, null, null, null, -1, true);
 	}
 
 	// Construtor Parametrizado
-	public UsuarioTO(int tipo, String nome, String dataNasc, String endereco, String bairro, long telefone,
+	public Usuario(int tipo, String nome, String dataNasc, String endereco, String bairro, long telefone,
 			String senha, String empresa, String horEntrada, String horSaida, long cpf, boolean permissaoAC) {
 		setTipo(tipo);
 		setNome(nome);
@@ -149,7 +149,7 @@ public class UsuarioTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UsuarioTO other = (UsuarioTO) obj;
+		Usuario other = (Usuario) obj;
 		if (bairro == null) {
 			if (other.bairro != null)
 				return false;

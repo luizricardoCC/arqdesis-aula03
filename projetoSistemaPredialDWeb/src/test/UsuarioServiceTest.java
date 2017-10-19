@@ -7,20 +7,20 @@ import org.junit.Test;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
-import javabean.UsuarioTO;
+import javabean.Usuario;
 import service.UsuarioService;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UsuarioServiceTest {
 	UsuarioService test;
-	UsuarioTO user, returnedUser;
+	Usuario user, returnedUser;
 	long lastCPF;
 	
 	@Before
 	public void setUp() throws Exception {
 		
 		test = new UsuarioService();
-		user = new UsuarioTO(0, 
+		user = new Usuario(0, 
 				"TestUser",
 				"1999-12-30", 
 				"Endereço00", 
@@ -37,9 +37,9 @@ public class UsuarioServiceTest {
 
 	@Test
 	public void test00ConsultarUsuario() {
-		UsuarioTO fixture;
+		Usuario fixture;
 		
-		fixture = new UsuarioTO(0, 
+		fixture = new Usuario(0, 
 				"Ricardo",
 				"1990-03-25", 
 				"Endereço1", 
@@ -81,7 +81,7 @@ public class UsuarioServiceTest {
 		lastCPF = user.getCpf();
 		test.excluirUsuario(user.getCpf());
 		
-		user = new UsuarioTO();
+		user = new Usuario();
 		returnedUser = test.consultarUsuario(lastCPF);
 		
 		assertEquals("Teste Exclusão", user, returnedUser);

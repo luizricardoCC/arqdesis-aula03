@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 import dao.EmpresaDAO;
-import javabean.UsuarioTO;
+import javabean.Usuario;
 import service.UsuarioService;
 
 import java.awt.GridLayout;
@@ -369,7 +369,7 @@ public class UsuarioVC extends JDialog implements ActionListener, ItemListener
          
          //verificando se já existe algum cadastro com o CPF informado
          UsuarioService usuarioConsulta = new UsuarioService();
-         UsuarioTO uTO = usuarioConsulta.consultarUsuario( cpf );
+         Usuario uTO = usuarioConsulta.consultarUsuario( cpf );
          tipoUsuario = uTO.getTipo();
          
          if(tipoUsuario == 0 || tipoUsuario == 1 || tipoUsuario == 2)
@@ -388,7 +388,7 @@ public class UsuarioVC extends JDialog implements ActionListener, ItemListener
          }
           
          UsuarioService usCadastro = new UsuarioService();
-         UsuarioTO uNovo = new UsuarioTO( cbTipoUsuario.getSelectedIndex(),
+         Usuario uNovo = new Usuario( cbTipoUsuario.getSelectedIndex(),
                  tfNome.getText(), 
                  d, 
                  tfEndereco.getText(), 
@@ -438,7 +438,7 @@ public class UsuarioVC extends JDialog implements ActionListener, ItemListener
             return;
          
          UsuarioService usuarioService = new UsuarioService();
-         UsuarioTO uTO = usuarioService.consultarUsuario( cpf );
+         Usuario uTO = usuarioService.consultarUsuario( cpf );
          
          /* A varíavel local tipoUsuario referencia um tipo de usuário a um número inteiro.
             0                      -> funcionário
@@ -563,7 +563,7 @@ public class UsuarioVC extends JDialog implements ActionListener, ItemListener
          }
          //
          UsuarioService usAlterar = new UsuarioService();
-         UsuarioTO uNovo = new UsuarioTO( cbTipoUsuario.getSelectedIndex(),
+         Usuario uNovo = new Usuario( cbTipoUsuario.getSelectedIndex(),
                  tfNome.getText(), 
                  d, 
                  tfEndereco.getText(), 

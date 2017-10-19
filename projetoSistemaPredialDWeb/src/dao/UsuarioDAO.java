@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import connection.ConnectionFactory;
-import javabean.UsuarioTO;
+import javabean.Usuario;
 
 import java.sql.ResultSet;
 
@@ -165,7 +165,7 @@ public class UsuarioDAO
    }*/
    
    //Comandos SQL
-   public boolean cadastrarUsuario( UsuarioTO usuarioTO )
+   public boolean cadastrarUsuario( Usuario usuarioTO )
    {
       String sqlInsert = "INSERT INTO usuario ( usuarioCpf,"
                                                + "usuarioTipo,"
@@ -214,12 +214,12 @@ public class UsuarioDAO
       }   
    }
    
-   public UsuarioTO consultarUsuario( long cpf )
+   public Usuario consultarUsuario( long cpf )
    {
       String sqlSelect = "SELECT * FROM usuario WHERE usuarioCpf = ?";
       PreparedStatement stm = null;
       ResultSet rs = null;
-      UsuarioTO usuarioTO = new UsuarioTO();
+      Usuario usuarioTO = new Usuario();
       
       try
       {
@@ -263,7 +263,7 @@ public class UsuarioDAO
       
    }
    
-   public boolean alterarUsuario( long cpf, UsuarioTO usuarioTO )
+   public boolean alterarUsuario( long cpf, Usuario usuarioTO )
    {
       String sqlUpdate = "UPDATE usuario SET usuarioCpf = ?, "
       									  + "usuarioNome = ?, "
@@ -336,4 +336,31 @@ public class UsuarioDAO
       }
    }
    
+   public boolean validar(Usuario usuario) {
+		String sqlSelect = "SELECT usuarioCpf, usuarioSenha FROM usuario "
+				+ "WHERE usuarioCpf = ? and usuarioSenha = ?";
+		// pega a conexão em um try normal para que ela não seja fechada
+		try {
+			Connection conn = ConnectionFactory.obtemConexao();
+			// usando o try with resources do Java 7, que fecha o que abriu
+			try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setLong(1, usuario.getCpf());
+				stm.setString(2, usuario.getSenha());
+				try (ResultSet rs = stm.executeQuery();) {
+					if (rs.next()) {
+						return true;
+					} else {
+						return false;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e1) {
+				System.out.print(e1.getStackTrace());
+			}
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+		return false;
+	}
 }
