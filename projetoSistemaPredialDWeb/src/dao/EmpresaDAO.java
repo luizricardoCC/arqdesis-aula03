@@ -86,7 +86,7 @@ public class EmpresaDAO {
 	
 	public ArrayList<Empresa> consultarTodasEmpresas(){
 		
-		String sqlSelect = "SELECT empresaRazaoSocial, empresaConjunto, empresaTempMaxAC FROM empresa";
+		String sqlSelect = "SELECT * FROM empresa";
 		PreparedStatement stm = null;
 		ResultSet rs = null;
 		ArrayList<Empresa> listaEmpresas = new ArrayList<Empresa>();
@@ -96,11 +96,14 @@ public class EmpresaDAO {
 			stm = conn.prepareStatement(sqlSelect);
 			rs = stm.executeQuery();
 			while (rs.next()) {
-				Empresa empTO = new Empresa();
-				empTO.setRazaoSocial(rs.getString(1));
-				empTO.setConjunto(rs.getString(2));
-				empTO.setValorMaxAC(rs.getInt(3));
-				listaEmpresas.add(empTO);
+				Empresa emp = new Empresa();
+				emp.setCnpj(rs.getLong(1));
+				emp.setRazaoSocial(rs.getString(2));
+				emp.setConjunto(rs.getString(3));
+				emp.setHorFunc(rs.getString(4));
+				emp.setHorFuncAC(rs.getString(5));
+				emp.setValorMaxAC(rs.getInt(6));
+				listaEmpresas.add(emp);
 			}
 			
 

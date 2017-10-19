@@ -26,7 +26,7 @@
 	    <div id="main" class="container">
 	        <h3 class="page-header">Cadastrar Empresa</h3>
 	        <!-- Formulario para inclusao de empresas -->
-	        <form action="ManterEmpresa.do" method="post">
+	        <form action="controller.do" method="post">
 	            <!-- area de campos do form -->
 	            <div class="row">
 	                <div class="form-group col-md-6">
@@ -62,8 +62,8 @@
 	            <hr />
 	            <div id="actions" class="row">
 	                <div class="col-md-12">
-	                    <button type="submit" class="btn btn-primary" name="acao" value="Criar">Salvar</button>
-	                    <a href="cadastrar.html" class="btn btn-default">Cancelar</a>
+	                    <button type="submit" class="btn btn-primary" name="command" value="CadastrarEmpresa">Salvar</button>
+	                    <a href="ListarEmpresas.jsp" class="btn btn-default">Cancelar</a>
 	                </div>
 	            </div>
 	        </form>

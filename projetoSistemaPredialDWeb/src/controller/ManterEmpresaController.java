@@ -16,7 +16,7 @@ import service.EmpresaService;
 /**
  * Servlet implementation class ManterEmpresaController
  */
-@WebServlet("/ManterEmpresa.do")
+@WebServlet("/manterEmpresa.do")
 public class ManterEmpresaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

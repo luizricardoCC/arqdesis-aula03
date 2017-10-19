@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import dao.EmpresaDAO;
 import javabean.Empresa;
 
@@ -20,6 +22,13 @@ public class EmpresaService {
 	   {
 	      Empresa empTO = empDAO.carregar(cnpj); 
 	      return empTO;
+	   }
+	   
+	   //Listar
+	   public ArrayList<Empresa> listar()
+	   {
+		  ArrayList<Empresa> lista = empDAO.consultarTodasEmpresas(); 
+	      return lista;
 	   }
 	   
 	   //Excluir
